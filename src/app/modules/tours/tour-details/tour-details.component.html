@@ -17,10 +17,10 @@
 
   <div class="w-full flex flex-wrap gap-x-6 justify-around text-base lg:text-lg">
     <div class="text-center">
-      <span class="text-green-500 font-medium">Incluye</span>
+      <span class="text-green-600 font-medium">Incluye</span>
       <br/>
       <p *ngFor="let feature of details.featuresIncluded" class="flex items-center">
-        <span class="material-icons material-icons-outlined text-green-500">done</span>
+        <span class="material-icons material-icons-outlined text-green-600">done</span>
         <span>{{feature}}</span>
       </p>
     </div>
@@ -36,7 +36,7 @@
 
   <div class="w-full flex flex-wrap gap-x-6 justify-around text-base lg:text-lg">
     <div class="text-center" *ngIf="places.length > 0">
-      <span class="text-green-500 font-medium">Lugares a visitar</span>
+      <span class="text-green-600 font-medium">Lugares a visitar</span>
       <br/>
       <ul>
         <li *ngFor="let place of places">
@@ -69,7 +69,7 @@
 <div class="mt-16 w-full h-60 text-center flex flex-col justify-end items-start gap-4 bg-cover bg-center"
 style="background-image: url({{bgImage}});">
   <div class="m-auto">
-    <p class="text-xl md:text-5xl lg:text-5xl font-bold uppercase text-white ml-5 extravagant-text">{{details.name}}</p>  
+    <p class="text-xl md:text-5xl lg:text-5xl font-bold uppercase text-white ml-5 extravagant-text">{{details.name}}</p>
   </div>
 </div>
 <div class="bg-white h-full px-20 py-10">
@@ -82,7 +82,7 @@ style="background-image: url({{bgImage}});">
     </div>
     <div class="grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-2">
         <div class="mt-5 flex flex-col items-start">
-            <p class="text-2xl font-medium text-green-500">{{details.name}}</p>
+            <p class="text-2xl font-medium text-green-600">{{details.name}}</p>
         </div>
     </div>
     <div class="mt-5">
@@ -93,7 +93,7 @@ style="background-image: url({{bgImage}});">
     </div>
     <div class="mt-10 w-full flex flex-wrap gap-x-6 justify-around text-base lg:text-lg">
       <div class="text-center" *ngIf="places.length > 0">
-        <span class="text-green-500 font-medium">Lugares a visitar</span>
+        <span class="text-green-600 font-medium">Lugares a visitar</span>
         <br/>
         <ul>
           <li *ngFor="let place of places">
@@ -105,10 +105,10 @@ style="background-image: url({{bgImage}});">
     </div>
     <div class="mt-10 w-full flex flex-wrap gap-x-6 justify-around text-base lg:text-lg">
       <div class="text-center">
-        <span class="text-green-500 font-medium">Incluye</span>
+        <span class="text-green-600 font-medium">Incluye</span>
         <br/>
         <p *ngFor="let feature of details.featuresIncluded" class="flex items-center">
-          <span class="material-icons material-icons-outlined text-green-500">done</span>
+          <span class="material-icons material-icons-outlined text-green-600">done</span>
           <span>{{feature}}</span>
         </p>
       </div>

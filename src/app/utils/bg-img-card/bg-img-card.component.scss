@@ -1,0 +1,12 @@
+.parent:hover .hover-overlay:before {
+  @apply scale-y-100;
+}
+
+.hover-overlay {
+  @apply relative;
+}
+
+.hover-overlay:before {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 scale-y-0 transition-transform;
+}

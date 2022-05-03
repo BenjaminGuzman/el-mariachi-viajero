@@ -77,7 +77,7 @@
 	<!--	</div>-->
 </div>
 
-<div class="w-11/12 md:w-5/6 mx-auto py-8 flex flex-col gap-y-12">
+<div class="w-11/12 md:w-5/6 mx-auto pt-8 pb-16 flex flex-col gap-y-16">
   <div class="border-l-2 border-black pl-4 text-left">
     <p class="mb-2 text-2xl md:text-3xl lg:text-4xl">
       Tu <span class="font-semibold">recreación</span> es nuestra obligación
@@ -93,116 +93,63 @@
       <p class="font-semibold text-2xl md:text-3xl lg:text-4xl">
         Promociones
       </p>
-      <p class="font-semibold text-green-500 text-md lg:text-2xl mt-2">
+      <p class="font-semibold text-green-600 text-md lg:text-2xl mt-2">
         Viaja a buen precio
       </p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <div *ngFor="let promo of promotions.slice(0, 3)">
-        <app-promotion-card [promotion]="promo" class="flex-1"></app-promotion-card>
+        <app-promotion-card [promotion]="promo"></app-promotion-card>
       </div>
     </div>
-    <div class="flex justify-center items-center">
-      <a routerLink="/promociones" class="btn-slide-left btn-2">
-        Más promociones
-      </a>
-    </div>
+    <a routerLink="/promociones" class="btn-slide-left btn-alt mx-auto">
+      Más promociones
+    </a>
   </div>
-</div>
 
-<!-- <div class="grid grid-cols-1 p-0 m-0 md:grid-cols-2 lg:grid-cols-3 bg-white mt-16">
-	<div class="h-full bg-cover bg-center"
-	     title="Image goes here"
-	     style="background-image: url('https://images.pexels.com/photos/3722817/pexels-photo-3722817.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');">
+  <!-- Paquetes -->
+  <div class="flex flex-col gap-y-8">
+    <div class="text-center">
+      <p class="font-semibold text-2xl md:text-3xl lg:text-4xl">
+        Paquetes
+      </p>
+      <p class="font-semibold text-green-600 text-md lg:text-2xl mt-2">
+        Conoce varios lugares en un solo viaje
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div *ngFor="let pack of packs.slice(0, 3)">
+        <app-pack-card [pack]="pack"></app-pack-card>
+      </div>
+    </div>
+    <a routerLink="/paquetes" class="btn-slide-left btn-alt mx-auto">
+      Más paquetes
+    </a>
+  </div>
 
-	</div>
-	<div id="whoWeAre" class="p-12 bg-green-400">
-		<p class="text-2xl font-semibold uppercase text-white text-left">El hombre y el turismo</p>
-		<p class="mt-5 text-left  font-sm text-white tracking-widest">
-			Las necesidades del hombre a través de la historia han sido viajar,
-			trasladarse de un lugar a otro solo con el afán de conocer,
-			divertirse y sentirse satisfecho con los conocimientos adquiridos
-			en sus aventuras.
-		</p>
-	</div>
-	<div class="bg-cover bg-center block"
-	     title="Image goes here"
-	     style="background-image: url('https://images.pexels.com/photos/784707/pexels-photo-784707.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
-	</div>
-</div> -->
+  <!-- Tours por categoría -->
+  <div class="flex flex-col gap-y-8">
+    <div class="text-center">
+      <p class="font-semibold text-2xl md:text-3xl lg:text-4xl">
+        Categorías
+      </p>
+      <p class="font-semibold text-green-600 text-md lg:text-2xl mt-2">
+        Tenemos tours para todas las ocasiones
+      </p>
+    </div>
+    <app-tour-categories class="w-full"></app-tour-categories>
+  </div>
 
-<!-- Paquetes -->
-<div class="w-5/6 mx-auto text-center mt-16">
-	<p class="text-lg font-semibold italic text-green-500 md:text-md lg:text-2xl extravagant-text">
-		Todo en uno
-	</p>
-	<p class="font-semibold text-black text-2xl md:text-3xl lg:text-4xl">
-		Conoce nuestros paquetes y lo que incluyen
-	</p>
-</div>
-<div *ngFor="let pack of packs.slice(0, 3)">
-	<app-pack-card [pack]="pack"></app-pack-card>
-</div>
-<div class="flex justify-center items-center mt-10">
-	<a routerLink="/paquetes" class="btn py-4 px-12 ">
-		Ver todos los paquetes
-	</a>
-</div>
-
-<!-- Tours por categoría -->
-<div class="w-5/6 mx-auto text-center mt-16">
-	<p class="text-lg font-semibold italic text-green-500 md:text-md lg:text-2xl extravagant-text">
-		Explora & Vive
-	</p>
-	<p class="text-2xl font-semibold text-black md:text-3xl lg:text-4xl">
-		Conoce nuestras categorías de Tours
-	</p>
-</div>
-<div class="w-5/6 mx-auto container mt-10">
-	<app-tour-categories class="w-full"></app-tour-categories>
-</div>
-
-
-
-<!-- Tours por ubicación -->
-<!-- Tours por categoría -->
-<div class="w-5/6 mx-auto text-center mt-16">
-	<p class="text-lg font-semibold italic text-green-500 md:text-md lg:text-2xl extravagant-text">
-		Conoce México
-	</p>
-	<p class="text-2xl font-semibold text-black md:text-3xl lg:text-4xl">
-		Explora nuestras ubicaciones
-	</p>
-</div>
-<div class="w-5/6 mx-auto mt-10 ">
-  <app-states></app-states>
-</div>
-
-
-
-<!-- Promociones -->
-<!--<div class="w-5/6 mx-auto p-5 text-center border-b-4 border-gray-600">-->
-<!--	<p class="text-2xl font-light uppercase text-black md:text-3xl lg:text-4xl">-->
-<!--		<span class="font-semibold">Promociones</span> del mes-->
-<!--	</p>-->
-<!--</div>-->
-<!--<p class="text-center">PROMOCIONSOTAS POR AQUÍ</p>-->
-
-<div id="contacto" class="p-10 grid grid-cols-1 p-0 m-0 md:grid-cols-2 md:p-16 lg:grid-cols-2 lg:p-20">
-	<p class="text-2xl font-light uppercase text-black md:text-3xl lg:text-4xl">
-		<span class="text-2xl font-semibold uppercase text-black md:text-3xl lg:text-4xl">Contáctanos.</span>
-		Será un gusto atenderte y descubrir cuál es el viaje que necesitas.
-	</p>
-	<div class="m-5">
-		<div class="mt-4 flex flex-col gap-2">
-			<div class="flex gap-2 text-gray-500">
-				<span class="material-icons material-icons-outlined w-6">phone</span>
-				<span class="text-sm">+52 5578 7878 78</span>
-			</div>
-			<div class="flex gap-2 text-gray-500">
-				<span class="material-icons material-icons-outlined w-6">email</span>
-				<span class="text-sm">contacto@elmariachiviajero.com.mx</span>
-			</div>
-		</div>
-	</div>
+  <!-- Tours por ubicación -->
+  <div class="flex flex-col gap-y-8">
+    <div class="text-center">
+      <p class="font-semibold text-2xl md:text-3xl lg:text-4xl">
+        Ubicaciones
+      </p>
+      <p class="font-semibold text-green-600 text-md lg:text-2xl mt-2">
+        Tenemos tours en todo México
+      </p>
+    </div>
+    <app-states class="w-full"></app-states>
+  </div>
 </div>
