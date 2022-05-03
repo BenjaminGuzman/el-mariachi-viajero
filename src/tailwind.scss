@@ -3,11 +3,64 @@
 @tailwind utilities;
 
 .btn {
-  @apply border-2 border-green-500 text-green-500 font-bold py-2 px-4 rounded-full transition-colors
-  hover:bg-green-500 hover:text-white
+  @apply border-2 border-green-600 text-green-600 font-medium py-2 px-4 transition-colors
+    hover:bg-green-600 hover:text-white;
 }
 
 .btn-reversed {
-  @apply border-2 border-white text-white font-bold py-2 px-4 rounded-full transition-colors
-  hover:bg-white hover:text-green-500
+  @apply border-2 border-white text-white font-bold py-2 px-4 transition-colors
+    hover:bg-white hover:text-green-600;
+}
+
+.btn-slide-center {
+  @apply font-medium border relative hover:border-transparent;
+}
+
+.btn-slide-center:before {
+  content: '';
+  @apply absolute top-0 left-0 right-0 w-full h-full scale-x-0 transition-transform ease-in -z-10;
+}
+
+.btn-slide-center:hover:before {
+  @apply scale-x-100;
+}
+
+.btn-slide-left {
+  @apply font-medium relative;
+}
+
+.btn-slide-left:before {
+  content: '';
+  transition: width ease-out 150ms;
+  @apply absolute top-0 left-0 w-0 h-full -z-10;
+}
+
+.btn-slide-left:hover:before {
+  @apply w-full;
+}
+
+.btn-slide-y-border {
+  @apply relative border-y-2 border-green-600 font-bold transition-colors duration-75
+    hover:border-transparent hover:bg-green-600;
+}
+
+.btn-slide-y-border:after, .btn-slide-y-border:before {
+  content: '';
+  @apply absolute bg-green-700 left-0 right-0 w-full h-[3px] scale-x-0 transition-transform ease-in;
+}
+
+.btn-slide-y-border:before {
+  @apply top-[-2px]
+}
+
+.btn-slide-y-border:after {
+  @apply bottom-[-2px]
+}
+
+.btn-slide-y-border:hover:after, .btn-slide-y-border:hover:before {
+  @apply scale-x-100;
+}
+
+.btn-2 {
+  @apply text-green-700 hover:text-white before:bg-green-700 uppercase p-3 border-2 border-green-700 transition-colors;
 }

@@ -5,146 +5,109 @@
 	<swiper class="w-full h-full" [pagination]="true" [navigation]="true" #carousel>
 		<!-- Welcome slide -->
 		<ng-template swiperSlide>
-		  	<div class="w-full h-full text-center flex flex-col justify-center items-center gap-4 md:gap-8 bg-cover bg-center pt-20"
-			   style="background-image: url('../../../assets/img/mv2.png')">
+      <div class="w-full h-full text-center flex flex-col justify-center items-center gap-4 md:gap-8 bg-cover bg-center pt-20"
+			   style="background-image: url('/assets/img/bellas-artes-noche.jpg')">
 				<div class="flex flex-col gap-y-4 md:gap-y-5 lg:gap-y-6 justify-center items-center text-center text-white z-20">
-					<div class="w-full flex flex-wrap gap-4 items-center justify-center">
-						<p class="text-2xl md:text-4xl lg:text-6xl uppercase extravagant-text">
-							<span class="font-medium">El </span>
-							<span class="font-bold">Mariachi </span>
-							<span class="font-medium">Viajero</span>
-						</p>
-					</div>
-					<div class="px-10 md:px-20 lg:px-48">
-						<p class="font-normal text-lg md:text-xl lg:text-xl">
-							Nos dedicamos a realizar todo tipo de transportación turística a nivel
-							nacional, con la calidad y garantía que usted y sus familiares merecen.
-						</p>
-					</div>
-					<div class="w-full flex flex-col items-center">
-						<a href="#" class="py-4 px-12 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 border border-green-600 rounded">
-							Ver Tours
-						</a>
-					</div>
+          <div class="flex flex-col gap-y-1 items-center">
+<!--            <img class="w-24 lg:w-32" src="/assets/img/icon.svg" alt="EMV">-->
+            <p class="text-4xl lg:text-6xl title-font">
+              El <span class="font-bold">Mariachi Viajero</span>
+            </p>
+          </div>
+          <p class="md:text-lg lg:text-xl">
+            Calidad, amor y diversión en todos sus viajes
+          </p>
+          <button class="btn-slide-center slide-btn">Tours</button>
 				</div>
-				<!-- add an overlay to darken the image -->
-				<div class="z-10 bg-black bg-opacity-50 absolute w-full h-full pointer-events-none"></div>
-		  	</div>
-		</ng-template>
-		<!-- Welcome slide -->
-		<!-- Welcome slide -->
-		<ng-template swiperSlide>
-			<div class="w-full h-full text-center flex flex-col justify-center items-center gap-4 md:gap-8 bg-cover bg-center pt-20"
-				 style="background-image: url('../../../assets/img/mv5.png')">
-				<div class="flex flex-col gap-y-4 md:gap-y-5 lg:gap-y-6 justify-center items-center text-center text-white z-20">
-					<div class="w-full flex flex-wrap gap-4 items-center justify-center">
-						<p class="text-2xl md:text-4xl lg:text-6xl uppercase extravagant-text">
-							<span class="font-light">Nuestros </span>
-							<span class="font-bold">Servicios </span>
-						</p>
-					</div>
-				  	<div class="px-10 md:px-20 lg:px-48">
-					  	<p class="font-normal text-lg md:text-xl lg:text-xl">
-							Transportación para todo tipo de necesidades y gustos individuales, familiares o grupales.
-						</p>
-					</div>
-					<div class="w-full flex flex-col items-center">
-						<a href="#" class="py-4 px-12 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 border border-green-600 rounded">
-							Ver Tours
-						</a>
-					</div>
-			  	</div>
-				<!-- add an overlay to darken the image -->
-				<div class="z-10 bg-black bg-opacity-50 absolute w-full h-full pointer-events-none"></div>
-			</div>
+				<!-- overlay to darken the image -->
+				<div class="z-10 bg-black bg-opacity-70 absolute w-full h-full pointer-events-none"></div>
+      </div>
 		</ng-template>
 		<ng-template swiperSlide>
-			<div class="w-full h-full text-center flex flex-col justify-center items-center gap-4 md:gap-8 bg-cover bg-center pt-20"
-				 style="background-image: url('../../../assets/img/mv4.png')">
-				<div class="flex flex-col gap-y-4 md:gap-y-5 lg:gap-y-6 justify-center items-center text-center text-white z-20">
-					<div class="w-full flex flex-wrap gap-4 items-center justify-center">
-						<p class="text-2xl md:text-4xl lg:text-6xl uppercase extravagant-text">
-							<span class="font-light">Descubre </span>
-							<span class="font-bold">México </span>
-						</p>
-					</div>
-				  	<div class="px-10 md:px-20 lg:px-48">
-					  	<p class="font-normal text-lg md:text-xl lg:text-xl">
-							Conoce sus museos, monumentos y la increíble gastronomía que espera por tí.
-						</p>
-					</div>
-					<div class="w-full flex flex-col items-center">
-						<a href="#" class="py-4 px-12 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 border border-green-600 rounded">
-							Ver Tours
-						</a>
-					</div>
-			  	</div>
-				<!-- add an overlay to darken the image -->
-				<div class="z-10 bg-black bg-opacity-50 absolute w-full h-full pointer-events-none"></div>
-			</div>
+      <div class="w-full h-full text-center flex flex-col justify-center items-center gap-4 md:gap-8 bg-cover bg-center pt-20"
+           style="background-image: url('/assets/img/pueblo.jpg')">
+        <div class="flex flex-col gap-y-4 md:gap-y-5 lg:gap-y-6 justify-center items-center text-center text-white z-20">
+<!--          <p class="text-4xl lg:text-6xl title-font font-bold">-->
+<!--            Promociones-->
+<!--          </p>-->
+          <button class="btn-slide-center slide-btn">Promociones</button>
+          <p class="md:text-lg lg:text-xl">
+            Viajes de calidad que cuidan tu economía
+          </p>
+        </div>
+        <!-- overlay to darken the image -->
+        <div class="z-10 bg-black bg-opacity-70 absolute w-full h-full pointer-events-none"></div>
+      </div>
 		</ng-template>
 		<ng-template swiperSlide>
-			<div class="w-full h-full text-center flex flex-col justify-center items-center gap-4 md:gap-8 bg-cover bg-center pt-20"
-				 style="background-image: url('../../../assets/img/mv1.png')">
-				<div class="flex flex-col gap-y-4 md:gap-y-5 lg:gap-y-6 justify-center items-center text-center text-white z-20">
-					<div class="w-full flex flex-wrap gap-4 items-center justify-center">
-						<p class="text-2xl md:text-4xl lg:text-6xl uppercase extravagant-text">
-							<span class="font-light">El </span>
-							<span class="font-bold">Hombre </span>
-							<span class="font-light">y El </span>
-							<span class="font-bold">Turismo </span>
-						</p>
-					</div>
-				  	<div class="px-10 md:px-20 lg:px-48">
-					  	<p class="font-normal text-lg md:text-xl lg:text-xl">
-							Las necesidades del hombre a través de la historia han sido viajar,
-							y trasladarse en búsqueda de nuevas aventuras.
-						</p>
-					</div>
-					<div class="w-full flex flex-col items-center">
-						<a href="#" class="py-4 px-12 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 border border-green-600 rounded">
-							Ver Tours
-						</a>
-					</div>
-			  	</div>
-				<!-- add an overlay to darken the image -->
-				<div class="z-10 bg-black bg-opacity-50 absolute w-full h-full pointer-events-none"></div>
-			</div>
+      <div class="w-full h-full text-center flex flex-col justify-center items-center gap-4 md:gap-8 bg-cover bg-center pt-20"
+           style="background-image: url('/assets/img/trajineras.jpg')">
+        <div class="flex flex-col gap-y-4 md:gap-y-5 lg:gap-y-6 justify-center items-center text-center text-white z-20">
+          <!--          <p class="text-4xl lg:text-6xl title-font font-bold">-->
+          <!--            Promociones-->
+          <!--          </p>-->
+          <button class="btn-slide-center slide-btn">Categorias</button>
+          <p class="md:text-lg lg:text-xl">
+            Tenemos viajes para todas las ocasiones
+          </p>
+        </div>
+        <!-- overlay to darken the image -->
+        <div class="z-10 bg-black bg-opacity-70 absolute w-full h-full pointer-events-none"></div>
+      </div>
+		</ng-template>
+		<ng-template swiperSlide>
+      <div class="w-full h-full text-center flex flex-col justify-center items-center gap-4 md:gap-8 bg-cover bg-center pt-20"
+           style="background-image: url('/assets/img/cdmx.jpg')">
+        <div class="flex flex-col gap-y-4 md:gap-y-5 lg:gap-y-6 justify-center items-center text-center text-white z-20">
+          <!--          <p class="text-4xl lg:text-6xl title-font font-bold">-->
+          <!--            Promociones-->
+          <!--          </p>-->
+          <button class="btn-slide-center slide-btn">Ubicaciones</button>
+          <p class="md:text-lg lg:text-xl">
+            Ofrecemos servicios en toda la república mexicana
+          </p>
+        </div>
+        <!-- overlay to darken the image -->
+        <div class="z-10 bg-black bg-opacity-70 absolute w-full h-full pointer-events-none"></div>
+      </div>
 		</ng-template>
 	</swiper>
 	<!--	<div class="absolute bottom-6 w-full flex justify-center z-20">-->
 	<!--		<span class="material-icons material-icons-outlined max-w-sm w-8 margin-auto animate-bounce">expand_more</span>-->
 	<!--	</div>-->
 </div>
-<div class="w-5/6 mx-auto border-l-4 border-black px-5 mt-14">
-	<p class="text-2xl text-black md:text-3xl lg:text-4xl">
-		Tu <span class="font-semibold">RECREACIÓN</span> es nuestra obligación
-	</p>
-	<p class="mt-5 text-md font-light text-left text-gray-500 tracking-widest">
-		Tus valoraciones ayudarán a nuestro <span class="font-semibold">crecimiento</span> y tus recomendaciones
-		nos motivarán a ser cada día más <span class="font-semibold">profesionales</span> con cada uno de
-		nuestros clientes.
-	</p>
-</div>
 
-<!-- Promociones -->
-<div class="w-5/6 mx-auto text-center mt-16">
-	<p class="text-md font-semibold italic text-green-500 md:text-md lg:text-2xl extravagant-text">
-		Viaja a buen precio
-	</p>
-	<p class="font-semibold text-black text-2xl md:text-3xl lg:text-4xl mt-2">
-		Conoce nuestras increíbles promociones
-	</p>
-</div>
-<div class="w-5/6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mt-10">
-	<div *ngFor="let promo of promotions.slice(0, 3)">
-		<app-promotion-card [promotion]="promo"></app-promotion-card>
-	</div>
-</div>
-<div class="flex justify-center items-center mt-10">
-	<a routerLink="/promociones" class="btn py-4 px-12 ">
-		Ver todas las promociones
-	</a>
+<div class="w-11/12 md:w-5/6 mx-auto py-8 flex flex-col gap-y-12">
+  <div class="border-l-2 border-black pl-4 text-left">
+    <p class="mb-2 text-2xl md:text-3xl lg:text-4xl">
+      Tu <span class="font-semibold">recreación</span> es nuestra obligación
+    </p>
+    <p class="text-gray-700">
+      Si no te la pasas excelentemente bien, te regresamos tu dinero
+    </p>
+  </div>
+
+  <!-- Promociones -->
+  <div class="flex flex-col gap-y-8">
+    <div class="text-center">
+      <p class="font-semibold text-2xl md:text-3xl lg:text-4xl">
+        Promociones
+      </p>
+      <p class="font-semibold text-green-500 text-md lg:text-2xl mt-2">
+        Viaja a buen precio
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <div *ngFor="let promo of promotions.slice(0, 3)">
+        <app-promotion-card [promotion]="promo" class="flex-1"></app-promotion-card>
+      </div>
+    </div>
+    <div class="flex justify-center items-center">
+      <a routerLink="/promociones" class="btn-slide-left btn-2">
+        Más promociones
+      </a>
+    </div>
+  </div>
 </div>
 
 <!-- <div class="grid grid-cols-1 p-0 m-0 md:grid-cols-2 lg:grid-cols-3 bg-white mt-16">
