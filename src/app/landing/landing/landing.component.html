@@ -2,7 +2,7 @@
 
 <!-- Carousel -->
 <div class="w-full h-screen bg-aztec bg-green-100 relative">
-	<swiper class="w-full h-full" [pagination]="true" [navigation]="true" #carousel>
+	<swiper class="w-full h-full" [pagination]="true" [navigation]="true">
 		<!-- Welcome slide -->
 		<ng-template swiperSlide>
       <div class="w-full h-full text-center flex flex-col justify-center items-center gap-4 md:gap-8 bg-cover bg-center pt-20"
@@ -97,12 +97,13 @@
         Viaja a buen precio
       </p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div *ngFor="let promo of promotions.slice(0, 3)">
-        <app-promotion-card [promotion]="promo"></app-promotion-card>
+    <div class="card-grid">
+      <div *ngFor="let promo of promotions.slice(0, nCards)">
+        <app-promotion-card [promo]="promo"></app-promotion-card>
       </div>
     </div>
-    <a routerLink="/promociones" class="btn-slide-left btn-alt mx-auto">
+    <p class="text-center" *ngIf="promotions.length === 0">😯 No tenemos promociones por el momento, lo cual es raro...</p>
+    <a *ngIf="promotions.length > 0" routerLink="/promociones" class="btn-slide-left btn-alt mx-auto">
       Más promociones
     </a>
   </div>
@@ -117,12 +118,13 @@
         Conoce varios lugares en un solo viaje
       </p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div *ngFor="let pack of packs.slice(0, 3)">
+    <div class="card-grid">
+      <div *ngFor="let pack of packs.slice(0, nCards)">
         <app-pack-card [pack]="pack"></app-pack-card>
       </div>
     </div>
-    <a routerLink="/paquetes" class="btn-slide-left btn-alt mx-auto">
+    <p class="text-center" *ngIf="packs.length === 0">😯 No tenemos paquetes por el momento, lo cual es raro...</p>
+    <a *ngIf="packs.length > 0" routerLink="/paquetes" class="btn-slide-left btn-alt mx-auto">
       Más paquetes
     </a>
   </div>

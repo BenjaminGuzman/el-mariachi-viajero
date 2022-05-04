@@ -9,7 +9,7 @@ import { ApolloQueryResult, gql } from '@apollo/client/core';
   templateUrl: './promotion-details.component.html',
   styleUrls: ['./promotion-details.component.scss'],
 })
-export class PromotionDetailsComponent {
+export class PromotionDetailsComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   public details: PromotionDetails = {} as PromotionDetails;
@@ -98,8 +98,6 @@ export class PromotionDetailsComponent {
         featuresIncluded: (res.data.promo.featuresIncluded as string | undefined || undefined)?.trim().split('\n'),
       };
       this.changeDetectorRef.markForCheck();
-
-      
 
       this.images = res.data.promoImages.edges.map(promotionImg => promotionImg.node);
       this.places = res.data.promoPlaces.edges.map(promoPlace => {

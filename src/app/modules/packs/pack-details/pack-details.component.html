@@ -26,8 +26,8 @@
       <br/>
       <ul>
         <li *ngFor="let place of places">
-          <a [routerLink]="'/ubicaciones/lugares/' + place.id" class="hover:underline">{{place.name}}</a>,
-          <a [routerLink]="'/ubicaciones/estado/' + place.state.id" class="hover:underline">{{place.state.name}}</a>
+          <span>{{place.name}}</span>,
+          <a [routerLink]="['/ubicaciones', place.state.id]" class="link">{{place.state.name}}</a>
         </li>
       </ul>
     </div>

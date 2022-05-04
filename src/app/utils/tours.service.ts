@@ -249,6 +249,9 @@ export class ToursService {
    * @return the same array received after the update
    */
   public fillToursMetadata(tours: TourCardInfo[]): Promise<TourCardInfo[]> {
+    if (tours.length === 0)
+      return new Promise(r => r([]));
+
     const query = `[${tours.map(t => `{tourId: {have: {objectId: {equalTo: "${t.id}"}}}}`).join(',')}]`;
     return new Promise<TourCardInfo[]>((resolve, reject) => {
       const subscription: Subscription = this._apollo.query<GQLToursMetadataQuery>({

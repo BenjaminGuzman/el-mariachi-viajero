@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LandingPack } from './LandingPack';
+import { PackCard } from './PackCard';
 import { Apollo } from 'apollo-angular';
 import { ApolloQueryResult, gql } from '@apollo/client/core';
 
@@ -7,7 +7,7 @@ import { ApolloQueryResult, gql } from '@apollo/client/core';
   providedIn: 'root',
 })
 export class PacksService {
-  private packs: LandingPack[] = [];
+  private packs: PackCard[] = [];
 
   constructor(private _apollo: Apollo) {
   }
@@ -17,8 +17,8 @@ export class PacksService {
    *
    * @param limit limit the number of packs to return from backend. If cache is populated, this is ignored
    */
-  public getPacks(limit: number): Promise<LandingPack[]> {
-    return new Promise<LandingPack[]>((resolve, reject) => {
+  public getPacks(limit: number): Promise<PackCard[]> {
+    return new Promise<PackCard[]>((resolve, reject) => {
       if (this.packs.length > 0)
         return resolve(this.packs);
 
@@ -65,7 +65,7 @@ export class PacksService {
 interface GQLPacksQuery {
   packs: {
     edges: {
-      node: LandingPack
+      node: PackCard
     }[];
   };
 }

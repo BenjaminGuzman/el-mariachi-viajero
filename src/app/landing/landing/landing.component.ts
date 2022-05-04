@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import SwiperCore, { Navigation, Pagination } from 'swiper';
-import { Subscription } from 'rxjs';
-import { SwiperComponent } from 'swiper/angular';
-import { CONTACT_EMAIL, CONTACT_PHONE_NUMBER } from '../../globals';
-import { LandingPromo } from '../../modules/promotions/LandingPromo';
-import { LandingPack } from '../../modules/packs/LandingPack';
-import { PromotionsService } from 'src/app/modules/promotions/promotions.service';
-import { PacksService } from 'src/app/modules/packs/packs.service';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import SwiperCore, {Navigation, Pagination} from 'swiper';
+import {Subscription} from 'rxjs';
+import {CONTACT_EMAIL, CONTACT_PHONE_NUMBER} from '../../globals';
+import {PromoCard} from '../../modules/promotions/PromoCard';
+import {PackCard} from '../../modules/packs/PackCard';
+import {PromotionsService} from 'src/app/modules/promotions/promotions.service';
+import {PacksService} from 'src/app/modules/packs/packs.service';
 
 
 SwiperCore.use([Pagination, Navigation]);
@@ -23,26 +22,11 @@ export class LandingComponent implements OnInit, OnDestroy {
   public readonly CONTACT_PHONE_NUMBER = CONTACT_PHONE_NUMBER;
   public readonly CONTACT_EMAIL = CONTACT_EMAIL;
 
-  /**
-   * Tells if the backend health check succeeded
-   */
-  public isBackendHealthy: boolean = true;
+  public promotions: PromoCard[] = [];
+  public packs: PackCard[] = [];
 
   /**
-   * Tells if the backend could be reached when performing the health check
-   *
-   * Let's be optimistic and start with a true value
-   */
-  public isBackendReachable: boolean = true;
-
-  @ViewChild('carousel')
-  public carousel?: SwiperComponent;
-
-  public promotions: LandingPromo[] = [];
-  public packs: LandingPack[] = [];
-
-  /**
-   * Maximum number of slides present in the carousel
+   * Maximum number of cards
    */
   public readonly nCards: number = 4;
 
@@ -51,10 +35,10 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     try {
-      this.promotions = await this.promotionsService.getPromos(this.nCards);
-      this._changeDetectorRef.markForCheck();
-      this.packs = await this.packsService.getPacks(this.nCards);
-      this._changeDetectorRef.markForCheck();
+      [this.promotions, this.packs] = await Promise.all([
+        this.promotionsService.getPromoCards(this.nCards),
+        this.packsService.getPacks(this.nCards)
+      ])
     } catch (e) {
       alert('Error al obtener los paquetes y promociones disponibles. Los detalles se encuentran en la consola');
       console.error(e);

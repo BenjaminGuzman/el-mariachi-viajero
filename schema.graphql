@@ -29,7 +29,7 @@ interface SchemaField {
 }
 
 "Use Inline Fragment on Array to get results: https://graphql.org/learn/queries/#inline-fragments"
-union ArrayResult = B4aCustomField | B4aMenuItem | B4aSetting | Category | Element | MyClass | Pack | PackImage | PackPlace | Place | Promotion | PromotionImage | PromotionPlace | Role | Session | State | Tour | TourCategory | TourImage | TourPlace | User
+union ArrayResult = B4aCustomField | B4aMenuItem | B4aSetting | Category | Element | Pack | PackImage | PackPlace | Place | Promotion | PromotionImage | PromotionPlace | Role | Session | State | Tour | TourCategory | TourImage | TourPlace | User
 
 "Current access control list of the current object."
 type ACL {
@@ -267,12 +267,6 @@ type CreateFilePayload {
   fileInfo: FileInfo!
 }
 
-type CreateMyClassPayload {
-  clientMutationId: String
-  "This is the created object."
-  myClass: MyClass!
-}
-
 type CreatePackImagePayload {
   clientMutationId: String
   "This is the created object."
@@ -391,12 +385,6 @@ type DeleteClassPayload {
   "This is the deleted class."
   class: Class!
   clientMutationId: String
-}
-
-type DeleteMyClassPayload {
-  clientMutationId: String
-  "This is the deleted object."
-  myClass: MyClass!
 }
 
 type DeletePackImagePayload {
@@ -543,8 +531,6 @@ type Mutation {
   createClass(input: CreateClassInput!): CreateClassPayload
   "The createFile mutation can be used to create and upload a new file."
   createFile(input: CreateFileInput!): CreateFilePayload
-  "The createMyClass mutation can be used to create a new object of the MyClass class."
-  createMyClass(input: CreateMyClassInput!): CreateMyClassPayload
   "The createPack mutation can be used to create a new object of the Pack class."
   createPack(input: CreatePackInput!): CreatePackPayload
   "The createPackImage mutation can be used to create a new object of the PackImage class."
@@ -585,8 +571,6 @@ type Mutation {
   deleteCategory(input: DeleteCategoryInput!): DeleteCategoryPayload
   "The deleteClass mutation can be used to delete an existing object class."
   deleteClass(input: DeleteClassInput!): DeleteClassPayload
-  "The deleteMyClass mutation can be used to delete an object of the MyClass class."
-  deleteMyClass(input: DeleteMyClassInput!): DeleteMyClassPayload
   "The deletePack mutation can be used to delete an object of the Pack class."
   deletePack(input: DeletePackInput!): DeletePackPayload
   "The deletePackImage mutation can be used to delete an object of the PackImage class."
@@ -639,8 +623,6 @@ type Mutation {
   updateCategory(input: UpdateCategoryInput!): UpdateCategoryPayload
   "The updateClass mutation can be used to update the schema for an existing object class."
   updateClass(input: UpdateClassInput!): UpdateClassPayload
-  "The updateMyClass mutation can be used to update an object of the MyClass class."
-  updateMyClass(input: UpdateMyClassInput!): UpdateMyClassPayload
   "The updatePack mutation can be used to update an object of the Pack class."
   updatePack(input: UpdatePackInput!): UpdatePackPayload
   "The updatePackImage mutation can be used to update an object of the PackImage class."
@@ -671,39 +653,6 @@ type Mutation {
   updateTourPlace(input: UpdateTourPlaceInput!): UpdateTourPlacePayload
   "The updateUser mutation can be used to update an object of the User class."
   updateUser(input: UpdateUserInput!): UpdateUserPayload
-}
-
-"The MyClass object type is used in operations that involve outputting objects of MyClass class."
-type MyClass implements Node & ParseObject {
-  ACL: ACL!
-  "This is the date in which the object was created."
-  createdAt: Date!
-  "The ID of an object"
-  id: ID!
-  "This is the object myField."
-  myField: String
-  "This is the object id."
-  objectId: ID!
-  "This is the date in which the object was las updated."
-  updatedAt: Date!
-}
-
-"A connection to a list of items."
-type MyClassConnection {
-  "This is the total matched objecs count that is returned when the count flag is set."
-  count: Int!
-  "A list of edges."
-  edges: [MyClassEdge]
-  "Information to aid in pagination."
-  pageInfo: PageInfo!
-}
-
-"An edge in a connection."
-type MyClassEdge {
-  "A cursor for use in pagination"
-  cursor: String!
-  "The item at the end of the edge"
-  node: MyClass
 }
 
 "The Pack object type is used in operations that involve outputting objects of Pack class."
@@ -1059,8 +1008,8 @@ type PromotionPlace implements Node & ParseObject {
     "These are the conditions that the objects need to match in order to be found."
     where: PlaceWhereInput
   ): PlaceConnection!
-  "This is the object promotionId."
-  promotionId(
+  "This is the object promoId."
+  promoId(
     after: String,
     before: String,
     first: Int,
@@ -1203,28 +1152,6 @@ type Query {
   classes: [Class!]!
   "The health query can be used to check if the server is up and running."
   health: Boolean!
-  "The myClass query can be used to get an object of the MyClass class by its id."
-  myClass(
-    "This is the object id. You can use either the global or the object id."
-    id: ID!,
-    "The read options for the query to be executed."
-    options: ReadOptionsInput
-  ): MyClass!
-  "The myClasses query can be used to find objects of the MyClass class."
-  myClasses(
-    after: String,
-    before: String,
-    first: Int,
-    last: Int,
-    "The read options for the query to be executed."
-    options: ReadOptionsInput,
-    "The fields to be used when sorting the data fetched."
-    order: [MyClassOrder!],
-    "This is the number of objects that must be skipped to return."
-    skip: Int,
-    "These are the conditions that the objects need to match in order to be found."
-    where: MyClassWhereInput
-  ): MyClassConnection!
   "Fetches an object given its ID"
   node(
     "The ID of an object"
@@ -2066,12 +1993,6 @@ type UpdateClassPayload {
   clientMutationId: String
 }
 
-type UpdateMyClassPayload {
-  clientMutationId: String
-  "This is the updated object."
-  myClass: MyClass!
-}
-
 type UpdatePackImagePayload {
   clientMutationId: String
   "This is the updated object."
@@ -2333,22 +2254,6 @@ enum CategoryOrder {
   updatedAt_DESC
 }
 
-"The MyClassOrder input type is used when sorting objects of the MyClass class."
-enum MyClassOrder {
-  ACL_ASC
-  ACL_DESC
-  createdAt_ASC
-  createdAt_DESC
-  id_ASC
-  id_DESC
-  myField_ASC
-  myField_DESC
-  objectId_ASC
-  objectId_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
 "The PackImageOrder input type is used when sorting objects of the PackImage class."
 enum PackImageOrder {
   ACL_ASC
@@ -2511,8 +2416,8 @@ enum PromotionPlaceOrder {
   objectId_DESC
   placeId_ASC
   placeId_DESC
-  promotionId_ASC
-  promotionId_DESC
+  promoId_ASC
+  promoId_DESC
   updatedAt_ASC
   updatedAt_DESC
 }
@@ -3182,19 +3087,6 @@ input CreateFileInput {
   upload: Upload!
 }
 
-"The CreateMyClassFieldsInput input type is used in operations that involve creation of objects in the MyClass class."
-input CreateMyClassFieldsInput {
-  ACL: ACLInput
-  "This is the object myField."
-  myField: String
-}
-
-input CreateMyClassInput {
-  clientMutationId: String
-  "These are the fields that will be used to create the new object."
-  fields: CreateMyClassFieldsInput
-}
-
 "The CreatePackFieldsInput input type is used in operations that involve creation of objects in the Pack class."
 input CreatePackFieldsInput {
   ACL: ACLInput
@@ -3332,8 +3224,8 @@ input CreatePromotionPlaceFieldsInput {
   ACL: ACLInput
   "This is the object placeId."
   placeId: PlaceRelationInput
-  "This is the object promotionId."
-  promotionId: PromotionRelationInput
+  "This is the object promoId."
+  promoId: PromotionRelationInput
 }
 
 input CreatePromotionPlaceInput {
@@ -3548,12 +3440,6 @@ input DeleteClassInput {
   clientMutationId: String
   "This is the name of the object class."
   name: String!
-}
-
-input DeleteMyClassInput {
-  clientMutationId: String
-  "This is the object id. You can use either the global or the object id."
-  id: ID!
 }
 
 input DeletePackImageInput {
@@ -3777,56 +3663,6 @@ input LogInWithInput {
 
 input LogOutInput {
   clientMutationId: String
-}
-
-"Allow to link OR add and link an object of the MyClass class."
-input MyClassPointerInput {
-  "Create and link an object from MyClass class."
-  createAndLink: CreateMyClassFieldsInput
-  "Link an existing object from MyClass class. You can use either the global or the object id."
-  link: ID
-}
-
-"Allow to add, remove, createAndAdd objects of the MyClass class into a relation field."
-input MyClassRelationInput {
-  "Add existing objects from the MyClass class into the relation. You can use either the global or the object ids."
-  add: [ID!]
-  "Create and add objects of the MyClass class into the relation."
-  createAndAdd: [CreateMyClassFieldsInput!]
-  "Remove existing objects from the MyClass class out of the relation. You can use either the global or the object ids."
-  remove: [ID!]
-}
-
-"The MyClassRelationWhereInput input type is used in operations that involve filtering objects of MyClass class."
-input MyClassRelationWhereInput {
-  "Check if the relation/pointer contains objects."
-  exists: Boolean
-  "Run a relational/pointer query where at least one child object can match."
-  have: MyClassWhereInput
-  "Run an inverted relational/pointer query where at least one child object can match."
-  haveNot: MyClassWhereInput
-}
-
-"The MyClassWhereInput input type is used in operations that involve filtering objects of MyClass class."
-input MyClassWhereInput {
-  "This is the object ACL."
-  ACL: ObjectWhereInput
-  "This is the AND operator to compound constraints."
-  AND: [MyClassWhereInput!]
-  "This is the NOR operator to compound constraints."
-  NOR: [MyClassWhereInput!]
-  "This is the OR operator to compound constraints."
-  OR: [MyClassWhereInput!]
-  "This is the object createdAt."
-  createdAt: DateWhereInput
-  "This is the object id."
-  id: IdWhereInput
-  "This is the object myField."
-  myField: StringWhereInput
-  "This is the object objectId."
-  objectId: IdWhereInput
-  "This is the object updatedAt."
-  updatedAt: DateWhereInput
 }
 
 "The NumberWhereInput input type is used in operations that involve filtering objects by a field of type Number."
@@ -4229,8 +4065,8 @@ input PromotionPlaceWhereInput {
   objectId: IdWhereInput
   "This is the object placeId."
   placeId: PlaceRelationWhereInput
-  "This is the object promotionId."
-  promotionId: PromotionRelationWhereInput
+  "This is the object promoId."
+  promoId: PromotionRelationWhereInput
   "This is the object updatedAt."
   updatedAt: DateWhereInput
 }
@@ -5024,21 +4860,6 @@ input UpdateClassInput {
   schemaFields: SchemaFieldsInput
 }
 
-"The UpdateMyClassFieldsInput input type is used in operations that involve creation of objects in the MyClass class."
-input UpdateMyClassFieldsInput {
-  ACL: ACLInput
-  "This is the object myField."
-  myField: String
-}
-
-input UpdateMyClassInput {
-  clientMutationId: String
-  "These are the fields that will be used to update the object."
-  fields: UpdateMyClassFieldsInput
-  "This is the object id. You can use either the global or the object id."
-  id: ID!
-}
-
 "The UpdatePackFieldsInput input type is used in operations that involve creation of objects in the Pack class."
 input UpdatePackFieldsInput {
   ACL: ACLInput
@@ -5188,8 +5009,8 @@ input UpdatePromotionPlaceFieldsInput {
   ACL: ACLInput
   "This is the object placeId."
   placeId: PlaceRelationInput
-  "This is the object promotionId."
-  promotionId: PromotionRelationInput
+  "This is the object promoId."
+  promoId: PromotionRelationInput
 }
 
 input UpdatePromotionPlaceInput {

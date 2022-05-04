@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PacksService } from 'src/app/modules/packs/packs.service';
-import { LandingPack } from '../LandingPack';
+import { PackCard } from '../PackCard';
 
 @Component({
   selector: 'app-packs',
@@ -10,7 +10,7 @@ import { LandingPack } from '../LandingPack';
 })
 export class PacksComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
-  public packs: LandingPack[] = [];
+  public packs: PackCard[] = [];
 
   constructor(private packsService: PacksService, private _changeDetectorRef: ChangeDetectorRef) {
   }

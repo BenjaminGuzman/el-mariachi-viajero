@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LandingPack } from '../modules/packs/LandingPack';
-import { LandingPromo } from '../modules/promotions/LandingPromo';
+import { PackCard } from '../modules/packs/PackCard';
+import { PromoCard } from '../modules/promotions/PromoCard';
 import { Apollo } from 'apollo-angular';
 import { ApolloQueryResult, gql } from '@apollo/client/core';
 
@@ -8,8 +8,8 @@ import { ApolloQueryResult, gql } from '@apollo/client/core';
   providedIn: 'root',
 })
 export class LandingPacksNPromosService {
-  private packs: LandingPack[] = [];
-  private promos: LandingPromo[] = [];
+  private packs: PackCard[] = [];
+  private promos: PromoCard[] = [];
 
   constructor(private _apollo: Apollo) {
   }
@@ -19,8 +19,8 @@ export class LandingPacksNPromosService {
    *
    * @param limit limit the number of packs to return from backend. If cache is populated, this is ignored
    */
-  public getPacks(limit: number): Promise<LandingPack[]> {
-    return new Promise<LandingPack[]>((resolve, reject) => {
+  public getPacks(limit: number): Promise<PackCard[]> {
+    return new Promise<PackCard[]>((resolve, reject) => {
       if (this.packs.length > 0)
         return resolve(this.packs);
 
@@ -67,8 +67,8 @@ export class LandingPacksNPromosService {
    *
    * @param limit limit the number of promotions to return from backend. If cache is populated, this is ignored
    */
-  public getPromos(limit: number): Promise<LandingPromo[]> {
-    return new Promise<LandingPromo[]>((resolve, reject) => {
+  public getPromos(limit: number): Promise<PromoCard[]> {
+    return new Promise<PromoCard[]>((resolve, reject) => {
       if (this.promos.length > 0)
         return resolve(this.promos);
 
@@ -117,7 +117,7 @@ export class LandingPacksNPromosService {
 interface GQLPacksQuery {
   packs: {
     edges: {
-      node: LandingPack
+      node: PackCard
     }[];
   };
 }
@@ -126,7 +126,7 @@ interface GQLPromosQuery {
   health: boolean;
   promotions: {
     edges: {
-      node: LandingPromo
+      node: PromoCard
     }[];
   };
 }

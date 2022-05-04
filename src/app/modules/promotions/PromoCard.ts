@@ -1,4 +1,4 @@
-export interface LandingPack {
+export interface PromoCard {
   id: string;
   name?: string;
   img: {
@@ -8,4 +8,6 @@ export interface LandingPack {
   featuresIncluded: string;
   featuresExcluded?: string;
   price: string;
+  validFrom: Date;
+  validUntil: Date;
 }

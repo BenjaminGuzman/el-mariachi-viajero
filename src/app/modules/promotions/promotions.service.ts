@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LandingPromo } from './LandingPromo';
+import { PromoCard } from './PromoCard';
 import { Apollo } from 'apollo-angular';
 import { ApolloQueryResult, gql } from '@apollo/client/core';
 
@@ -7,7 +7,7 @@ import { ApolloQueryResult, gql } from '@apollo/client/core';
   providedIn: 'root',
 })
 export class PromotionsService {
-  private promos: LandingPromo[] = [];
+  private promos: PromoCard[] = [];
 
   constructor(private _apollo: Apollo) {
   }
@@ -17,8 +17,8 @@ export class PromotionsService {
    *
    * @param limit limit the number of promotions to return from backend. If cache is populated, this is ignored
    */
-  public getPromos(limit: number): Promise<LandingPromo[]> {
-    return new Promise<LandingPromo[]>((resolve, reject) => {
+  public getPromoCards(limit: number): Promise<PromoCard[]> {
+    return new Promise<PromoCard[]>((resolve, reject) => {
       if (this.promos.length > 0)
         return resolve(this.promos);
 
@@ -26,9 +26,13 @@ export class PromotionsService {
         return resolve([]);
 
       const subscription = this._apollo.query<GQLPromosQuery>({
-        query: gql`query($limit: Int) {
+        query: gql`query($limit: Int, $today: Date) {
           health
-          promotions(first: $limit) {
+          promotions(
+            first: $limit,
+            where: {promoValidUntil: {greaterThanOrEqualTo: $today}},
+            order: [promoValidUntil_ASC]
+          ) {
             edges {
               node {
                 id
@@ -37,7 +41,6 @@ export class PromotionsService {
                   url
                 }
                 shortDescription: promoShortDescription
-                description: promoDescription
                 featuresIncluded: promoFeaturesIncluded
                 featuresExcluded: promoFeaturesExcluded
                 price: promoPrice
@@ -49,6 +52,7 @@ export class PromotionsService {
         }`,
         variables: {
           limit,
+          today: new Date().toISOString() //'01/01/1900'
         },
       }).subscribe({
         next: (res: ApolloQueryResult<GQLPromosQuery>) => {
@@ -70,7 +74,7 @@ interface GQLPromosQuery {
   health: boolean;
   promotions: {
     edges: {
-      node: LandingPromo
+      node: PromoCard
     }[];
   };
 }
